@@ -14,7 +14,7 @@
         @ApiResponse(code = {{{code}}}, message = "{{{message}}}", response = {{{baseType}}}.class{{#returnContainer}}, responseContainer = "{{{returnContainer}}}"{{/returnContainer}}){{#hasMore}},{{/hasMore}}{{/responses}} })
     {{/useOas2}}
     {{^useOas2}}
-    @Operation(summary = "{{{summary}}}", description = "{{{notes}}}"{{#hasAuthMethods}}, security = {
+    @Operation(operationId = "{{{operationId}}}", summary = "{{{summary}}}", description = "{{{notes}}}"{{#hasAuthMethods}}, security = {
         {{#authMethods}}@SecurityRequirement(name = "{{name}}"{{#isOAuth}}, scopes = {
             {{#each scopes}}"{{@key}}"{{^@last}},
             {{/@last}}{{/each}}

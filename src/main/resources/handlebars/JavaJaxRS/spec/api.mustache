@@ -25,7 +25,8 @@ import java.util.List;
 {{#useBeanValidation}}import javax.validation.constraints.*;
 import javax.validation.Valid;{{/useBeanValidation}}
 
-@Path("/{{{baseName}}}")
+{{#apiBasePath}}@Path("/{{{apiBasePath}}}"){{/apiBasePath}}
+{{^apiBasePath}}@Path(""){{/apiBasePath}}
 {{#useOas2}}
 @Api(description = "the {{{baseName}}} API")
 {{/useOas2}}{{#hasConsumes}}

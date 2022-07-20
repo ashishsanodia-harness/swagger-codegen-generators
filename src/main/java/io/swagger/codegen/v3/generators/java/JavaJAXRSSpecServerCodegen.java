@@ -24,8 +24,10 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
     public static final String INTERFACE_ONLY = "interfaceOnly";
     public static final String GENERATE_POM = "generatePom";
     public static final String USE_TAGS = "useTags";
+    public static final String RETURN_RESPONSE = "returnResponse";
 
     protected boolean useTags = false;
+    protected boolean returnResponse = false;
 
     private boolean interfaceOnly = false;
     private boolean generatePom = true;
@@ -61,6 +63,7 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
         cliOptions.add(CliOption.newBoolean(GENERATE_POM, "Whether to generate pom.xml if the file does not already exist.").defaultValue(String.valueOf(generatePom)));
         cliOptions.add(CliOption.newBoolean(INTERFACE_ONLY, "Whether to generate only API interface stubs without the server files.").defaultValue(String.valueOf(interfaceOnly)));
         cliOptions.add(CliOption.newBoolean(USE_TAGS, "Whether to use tags for grouping Operations.").defaultValue(String.valueOf(useTags)));
+        cliOptions.add(CliOption.newBoolean(RETURN_RESPONSE, "Whether to return a javax.ws.rs.core.Response.").defaultValue(String.valueOf(returnResponse)));
     }
 
     @Override
@@ -73,6 +76,9 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
         }
         if (additionalProperties.containsKey(USE_TAGS)) {
             this.setUseTags(Boolean.valueOf(additionalProperties.get(USE_TAGS).toString()));
+        }
+        if (additionalProperties.containsKey(RETURN_RESPONSE)) {
+            this.setReturnResponse(Boolean.valueOf(additionalProperties.get(RETURN_RESPONSE).toString()));
         }
 
         if (interfaceOnly) {
@@ -266,5 +272,9 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
 
     public void setUseTags(boolean useTags) {
         this.useTags = useTags;
+    }
+
+    public void setReturnResponse(boolean returnResponse) {
+        this.returnResponse = returnResponse;
     }
 }

@@ -1,2 +1,1 @@
-{{#is this 'form-param'}}{{#isNot this 'binary'}}@FormParam(value = "{{baseName}}")  {{{dataType}}} {{paramName}}{{/isNot}}{{#is this 'binary'}} @FormParam(value = "{{baseName}}") InputStream {{paramName}}InputStream,
-   @FormParam(value = "{{baseName}}") Attachment {{paramName}}Detail{{/is}}{{/is}}
+{{#is this 'form-param'}}{{#isNot this 'binary'}}@FormDataParam(value = "{{baseName}}")  {{{dataType}}} {{paramName}}{{/isNot}}{{#is this 'binary'}} @FormDataParam(value = "{{baseName}}") InputStream {{paramName}}InputStream{{/is}}{{/is}}

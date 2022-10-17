@@ -33,10 +33,6 @@ import javax.validation.Valid;
 {{>interface}}
 {{/isComposedModel}}
 {{^isComposedModel}}
-{{#description}}
-/**
- * {{description}}
- **/{{/description}}
 {{#is this 'enum'}}
 {{>enumOuterClass}}
 {{/is}}

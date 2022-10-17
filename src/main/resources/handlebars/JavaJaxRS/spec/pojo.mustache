@@ -9,7 +9,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 {{^useOas2}}
 import io.swagger.v3.oas.annotations.media.Schema;
 {{/useOas2}}
-
+{{#description}}
+/**
+* {{description}}
+**/{{/description}}
 
 {{#discriminator}}{{>typeInfoAnnotation}}{{/discriminator}}
 

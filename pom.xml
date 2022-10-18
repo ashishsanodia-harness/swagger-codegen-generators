@@ -3,16 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>5</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.swagger.codegen.v3</groupId>
     <artifactId>swagger-codegen-generators</artifactId>
-    <version>1.0.36-harness-SNAPSHOT</version>
+    <version>1.0.35-harness-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <build>
@@ -254,7 +249,7 @@
         </dependency>
     </dependencies>
     <properties>
-        <swagger-codegen-version>3.0.35-SNAPSHOT</swagger-codegen-version>
+        <swagger-codegen-version>3.0.35-harness-SNAPSHOT</swagger-codegen-version>
         <swagger-parser-version>2.0.30</swagger-parser-version>
         <swagger-core-version>2.1.13</swagger-core-version>
         <jackson-version>2.13.2</jackson-version>

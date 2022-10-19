@@ -2188,6 +2188,11 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
                                     .schema(propertyMap.get(propertyName)), imports);
                             if (isMultipart) {
                                 formParameter.getVendorExtensions().put(CodegenConstants.IS_MULTIPART_EXT_NAME, Boolean.TRUE);
+
+                                Map<String, String> contentTypes = new HashMap<>();
+                                contentTypes.put("multipart/form-data", "true");
+                                codegenContent.getContentExtensions().put("x-consume-type", contentTypes);
+                                codegenContent.getContentExtensions().put("hasConsumeTypes", "true");
                             }
                             // todo: this segment is only to support the "older" template design. it should be removed once all templates are updated with the new {{#contents}} tag.
                             formParameter.getVendorExtensions().put(CodegenConstants.IS_FORM_PARAM_EXT_NAME, Boolean.TRUE);
@@ -2202,6 +2207,14 @@ public abstract class DefaultCodegenConfig implements CodegenConfig {
                 } else {
                     CodegenParameter bodyParam = fromRequestBody(body, schemaName, schema, schemas, imports);
                     operationParameters.setBodyParam(bodyParam);
+                    Map<String, String> contentTypes = new HashMap<>();
+                    for (Map<String, String> cons: codegenOperation.consumes) {
+                        if(!cons.get("mediaType").equalsIgnoreCase("multipart/form-data")) {
+                            contentTypes.put(cons.get("mediaType"), "true");
+                            codegenContent.getContentExtensions().put("hasConsumeTypes", "true");
+                        }
+                    }
+                    codegenContent.getContentExtensions().put("x-consume-type", contentTypes);
                     if (foundSchemas.isEmpty()) {
                         operationParameters.addBodyParams(bodyParam.copy());
                         operationParameters.addAllParams(bodyParam);

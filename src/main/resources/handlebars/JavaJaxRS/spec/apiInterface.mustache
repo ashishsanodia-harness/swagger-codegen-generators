@@ -1,6 +1,6 @@
     @{{httpMethod}}{{#subresourceOperation}}
-    @Path("{{{path}}}"){{/subresourceOperation}}{{#hasConsumes}}
-    @Consumes({ {{#consumes}}"{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}{{/consumes}} }){{/hasConsumes}}{{#hasProduces}}
+    @Path("{{{path}}}"){{/subresourceOperation}}{{#contentExtensions.hasConsumeTypes}}
+    @Consumes({ {{#each contentExtensions.x-consume-type}}"{{@key}}"{{^@last}}, {{/@last}}{{/each}} }){{/contentExtensions.hasConsumeTypes}}{{#hasProduces}}
     @Produces({ {{#produces}}"{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}{{/produces}} }){{/hasProduces}}
     {{#useOas2}}
     @ApiOperation(value = "{{{summary}}}", notes = "{{{notes}}}"{{#hasAuthMethods}}, authorizations = {
